@@ -110,7 +110,6 @@ p>span {
      margin: 0 auto;
  }
  ul li {
-     clear:both;
      height: 60px;
      line-height: 1.5;
  }
@@ -128,6 +127,7 @@ li img {
      margin-bottom: 16px !important;
      padding: 2px 8px;
      background: #eee;
+     color: #000;
      line-height: 1.5;
      display: inline-block;
 }
