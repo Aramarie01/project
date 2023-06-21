@@ -110,6 +110,7 @@ p>span {
      margin: 0 auto;
  }
  ul li {
+     clear: both;
      height: 60px;
      line-height: 1.5;
  }
