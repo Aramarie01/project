@@ -1,6 +1,4 @@
- // ==================== start ====================
-// animation start after 1000 miliseconds
-setTimeout(init, 1000);
+ 
 
 // You can change global variables here:
 var radius = 240; // how big of the radius
@@ -11,8 +9,12 @@ var imgHeight = 170; // heigh images (unit: px)
  // link of background music - set 'null' if you dont want to play background music
 var bgMusicURL = '';
 var bgMusicControls = true; // Show UI music control
- // ==================== start ====================
-var ospin = document.getElementById('drag-container');
+// ==================== start ====================
+// animation start after 1000 miliseconds
+setTimeout(init, 1000);
+
+var odrag = document.getElementById('drag-container');
+var ospin = document.getElementById('spin-container');
 var aImg = ospin.getElementsByTagName('img');
 var aVid = ospin.getElementsByTagName('video');
 var aEle = [...aImg, ...aVid]; // combine 2 arrays
@@ -23,6 +25,8 @@ ospin.style.height= imgHeight + "px";
 var ground = document.getElementById('ground');
 ground.style.width = radius * 3 + "px";
 ground.style.height = radius * 3 + "px";
+
+
 
  function init(delayTime) {
 
@@ -61,7 +65,7 @@ if (bgMusicURL) {
 }
  // setup events
 ospin.onpointerdown = function (e) {
-  clearInterval(this.timer);
+  clearInterval(odrag.timer);
   e = e || window.event;
   sX = e.clientX;
   sY = e.clientY;
@@ -73,20 +77,20 @@ ospin.onpointerdown = function (e) {
     desY = nY - sY;
     tX += desX * 0.1;
     tY += desY * 0.1;
-    applyTransform(this);
+    applyTransform(odrag);
     sX = nX;
     sY = nY;
   };
    this.onpointerup = function (e) {
-    this.timer = setInterval(function () {
+    odrag.timer = setInterval(function () {
       desX *=0.95;
       desY *=0.95;
       tX += desX * 0.1;
       tY += desY * 0.1;
-      applyTransform(ospin);
+      applyTransform(odrag);
       playSpin(false);
       if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-        clearInterval(this.timer);
+        clearInterval(odrag.timer);
         playSpin(true);
       }
     }, 17);
